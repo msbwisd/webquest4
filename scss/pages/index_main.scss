@@ -1,0 +1,93 @@
+* { font-size: 16px; color: rgb(251, 248, 248); }
+p{ padding: 0; margin: 0; }
+.pst_rel { position: relative; }
+
+body {
+    display: flex;
+    .contents{
+        width: 1280px; height: 720px; 
+        margin: 0 auto; display: flex;
+        background-color: rgb(50,50,50);
+        .title_box{
+            width: 280px; height: 100%;
+            border-right: 2px solid white;
+            box-sizing: border-box; background-color: #543333;
+            display: flex; flex-direction: column;
+            > p { 
+                height: 100%; display: flex; margin: 0 auto;
+            }
+            &_up { 
+                font-family: 'Times New Roman'; font-weight: bold; 
+                font-style: italic; font-size: 30px; line-height: 50px;
+                justify-self: center; align-items: center; 
+            }
+            &_down { 
+                font-family: Verdana; font-size: 10px; line-height: 16px;  
+                align-items: flex-end; padding-bottom: 20px;
+            }
+        }
+        .right_container {
+            width: 1000px; display: flex; flex-direction: column;
+            .nav_box {
+                width: 100%; height: 120px; 
+                border-bottom: 2px solid white; box-sizing: border-box;
+                >img { 
+                    display: block; width: 30px; height: 30px;
+                    position: absolute; bottom: 10px; right: 10px; 
+                }
+            }
+            section{
+                width: 100%; height: 600px; 
+                display: flex;   // article 끼리 수평배치
+                > article {
+                    width: 250px; height: 100%; opacity: 0.4; 
+                    >.article_background_image{
+                        position: absolute;
+                        width: 0; height: 100%;
+                        z-index: 0;
+                        background-image: url('../../image/back.png');
+                    }
+                    >.article_inner_content{
+                        z-index: 1; 
+                        // article별 넘버, 제목, 본문, 사진 수직배치
+                        display: flex; flex-direction: column;
+                        height: 100%; 
+                        box-sizing: border-box; padding: 70px 40px; 
+                        >.article_num {
+                            font-size: 30px; 
+                            font-weight: bold;
+                            text-decoration-line: underline;
+                            text-underline-offset: 10px;
+                            text-decoration-thickness: 1.5px;
+                        }
+                        >.article_title{
+                            font-size: 18px; font-weight: bold; 
+                            line-height: 60px;
+                        }
+                        > a {
+                            display: block; margin-top: auto;   
+                            width: 170px; height: 100px; 
+                            .article_img {
+                                display: block; width: 100%; height: 100%;
+                            }
+                        }
+                    }
+                }        
+                // article 구역 호버링 이벤트 발생시
+                > article:hover {
+                    opacity: 1; 
+                    >.article_background_image{
+                        transition-property: width, size;
+                        transition-duration: 1s;
+                        width: 250px; z-index: 2;
+                    }
+                    p { z-index: 3; }
+                    a {
+                        transition-duration: 1s; z-index: 2;
+                        width: calc(170px*1.15);  height: calc(100px*1.15);
+                    }
+                }            
+            }
+        }
+    }   
+}
