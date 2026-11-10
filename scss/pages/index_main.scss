@@ -42,18 +42,20 @@ body {
                 > article {
                     width: 250px; height: 100%; opacity: 0.4; 
                     >.article_background_image{
-                        position: absolute;
+                        position: absolute; 
                         width: 0; height: 100%;
-                        z-index: 0;
                         background-image: url('../../image/back.png');
+                        transition-property: width;
+                        transition-duration: 1s;
                     }
                     >.article_inner_content{
                         $article_normal_z_index: 1 !global;
-                        z-index: $article_normal_z_index; 
+                        z-index: $article_normal_z_index+1; 
                         // article별 넘버, 제목, 본문, 사진 수직배치
                         display: flex; flex-direction: column;
                         height: 100%; 
                         box-sizing: border-box; padding: 70px 40px; 
+                        * { z-index: $article_normal_z_index+1; }
                         >.article_num {
                             font-size: 30px; 
                             font-weight: bold;
@@ -68,6 +70,8 @@ body {
                         > a {
                             display: block; margin-top: auto;   
                             width: 170px; height: 100px; 
+                            transition-property: width, height;
+                            transition-duration: 1s;
                             .article_img {
                                 display: block; width: 100%; height: 100%;
                             }
@@ -78,14 +82,16 @@ body {
                 > article:hover {
                     opacity: 1; 
                     >.article_background_image{
-                        transition-property: width, size;
+                        transition-property: width;
                         transition-duration: 1s;
-                        width: 100%; z-index: $article_normal_z_index+1;
+                        width: 100%; 
                     }
-                    p { z-index: $article_normal_z_index+1; }
-                    a {
-                        transition-duration: 1s; z-index: $article_normal_z_index+1;
-                        width: calc(170px*1.15);  height: calc(100px*1.15);
+                    >.article_inner_content{
+                        p { z-index: $article_normal_z_index+1; }
+                        a {
+                            transition-duration: 1s; z-index: $article_normal_z_index+1;
+                            width: calc(170px*1.15);  height: calc(100px*1.15);
+                        }
                     }
                 }            
             }

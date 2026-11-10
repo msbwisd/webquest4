@@ -85,16 +85,20 @@ body .contents .right_container > section > article > .article_background_image 
   position: absolute;
   width: 0;
   height: 100%;
-  z-index: 0;
   background-image: url("../../image/back.png");
+  transition-property: width;
+  transition-duration: 1s;
 }
 body .contents .right_container > section > article > .article_inner_content {
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
   padding: 70px 40px;
+}
+body .contents .right_container > section > article > .article_inner_content * {
+  z-index: 2;
 }
 body .contents .right_container > section > article > .article_inner_content > .article_num {
   font-size: 30px;
@@ -113,6 +117,8 @@ body .contents .right_container > section > article > .article_inner_content > a
   margin-top: auto;
   width: 170px;
   height: 100px;
+  transition-property: width, height;
+  transition-duration: 1s;
 }
 body .contents .right_container > section > article > .article_inner_content > a .article_img {
   display: block;
@@ -123,15 +129,14 @@ body .contents .right_container > section > article:hover {
   opacity: 1;
 }
 body .contents .right_container > section > article:hover > .article_background_image {
-  transition-property: width, size;
+  transition-property: width;
   transition-duration: 1s;
   width: 100%;
+}
+body .contents .right_container > section > article:hover > .article_inner_content p {
   z-index: 2;
 }
-body .contents .right_container > section > article:hover p {
-  z-index: 2;
-}
-body .contents .right_container > section > article:hover a {
+body .contents .right_container > section > article:hover > .article_inner_content a {
   transition-duration: 1s;
   z-index: 2;
   width: 195.5px;
